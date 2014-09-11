@@ -1,0 +1,56 @@
+
+<% content_for :page_title do %>
+  <%= "Mobile Notification" %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to "New Mobile Notification", '/admin/mobile_notification/new', :icon => 'icon-plus icon-globe', :id => '' %>
+  </li>
+<% end %>
+
+<table class="index sortable" id='listing_mobile_notifications' >
+  <colgroup>
+    <col style="width: 15%">
+    <col style="width: 55%">
+    <col style="width: 15%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+    <tr data-hook="mobile_notifications_header">
+      <th><%= t(:title) %></th>
+      <th><%= t(:content) %></th>
+      <th><%= "start date" %></th>
+      <th><%= "end date" %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%  @mobile_notification.each do |notification| %>
+      <tr>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.title %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.content %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.start_date %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.end_date %>
+        </td>
+        <td class="actions">
+          <a href="/admin/mobile_notification/<%= notification.id %>/edit" class="icon_link with-tip icon-edit no-text" data-action="edit"></a>
+          <a href="/admin/mobile_notification/<%= notification.id %>" class="delete-resource icon_link with-tip icon-trash no-text" data-action="remove" data-confirm="Are you sure?"></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+
+
