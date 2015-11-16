@@ -20,6 +20,7 @@
     <tr data-hook="mobile_notifications_header">
       <th><%= t(:title) %></th>
       <th><%= t(:content) %></th>
+      <th><%= "Image" %></th>
       <th><%= "start date" %></th>
       <th><%= "end date" %></th>
       <th class="actions"></th>
@@ -35,6 +36,10 @@
         <td>
           <span class="handle"></span>&nbsp;
           <%= notification.content %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= image_tag("http://s3-ap-southeast-1.amazonaws.com/st-mobile-apps/Notification/#{notification.try(:image_name)}", :size => "125x30") %>
         </td>
         <td>
           <span class="handle"></span>&nbsp;
