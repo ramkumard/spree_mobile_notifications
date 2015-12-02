@@ -1,0 +1,33 @@
+<% content_for :page_title do %>
+  <%= "GCM Notification" %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to t('new_notification'), '/admin/gcm_notification/new', :icon => 'icon-plus', :id => '' %>
+  </li>
+<% end %>
+
+<%#= form_for(@globalnotification) do |f| %>
+<%= form_for @gcm_notification, :as => :spree_admin_gcm_notification, :url => { :action => "update" } do |f| %>
+    <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :image_name %><br />
+    <%= f.text_field :image_name %> Strictly to be same as image's name.
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+

@@ -1,0 +1,57 @@
+
+<% content_for :page_title do %>
+  <%= "GCM Notification" %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to "New GCM Notification", '/admin/gcm_notification/new', :icon => 'icon-plus icon-globe', :id => '' %>
+  </li>
+<% end %>
+
+<table class="index sortable" id='listing_gcm_notifications' >
+  <colgroup>
+    <col style="width: 15%">
+    <col style="width: 55%">
+    <col style="width: 15%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+    <tr data-hook="gcm_notifications_header">
+      <th><%= t(:title) %></th>
+      <th><%= t(:content) %></th>
+      <th><%= "Image" %></th>
+      <th><%= "Path" %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%  @gcm_notification.each do |notification| %>
+      <tr>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.title %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.content %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= image_tag("http://s3-ap-southeast-1.amazonaws.com/st-mobile-apps/Notification/#{notification.try(:image_name)}", :size => "125x30") %>
+        </td>
+        <td>
+          <span class="handle"></span>&nbsp;
+          <%= notification.link %>
+        </td>
+        <td class="actions">
+          <a href="/admin/gcm_notification/<%= notification.id %>/notify_user" class="icon_link with-tip icon-edit no-text"></a>
+          <a href="/admin/gcm_notification/<%= notification.id %>/edit" class="icon_link with-tip icon-edit no-text" data-action="edit"></a>
+          <a href="/admin/gcm_notification/<%= notification.id %>" class="delete-resource icon_link with-tip icon-trash no-text" data-action="remove" data-confirm="Are you sure?"></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+
+
